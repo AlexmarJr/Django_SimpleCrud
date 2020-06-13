@@ -10,10 +10,31 @@
     <title>Update</title>
 </head>
 <body>
+     <nav class="navbar navbar-light bg-light">
+         <span class="navbar-brand mb-0 h1">Navbar</span>
+         <a class="navbar-brand mb-0 h1" href="{% url 'home' %}">Home</a>
+     </nav>
     <form method="POST" action="">
     {% csrf_token %}
-        {{form}}
-        <input type="submit" class="btn btn-warning">
+        <hr>
+        <div class="container">
+            <div class="card">
+                <h5 class="card-header">Update Task: {{task.title}}</h5>
+                <div class="card-body">
+                    <span>Task Title: </span>
+                    <input class="form-control" type="text" name="title" value="{{task.title}}">
+                    <hr>
+                    <span>Task Description</span>
+                    <textarea class="form-control" name="description" rows="3">{{task.description}}</textarea>
+                    <hr>
+                    <span>Task Complete?</span>
+                    <input class="form-control" type="checkbox" name="complete" {% if task.complete == True %} checked {% endif %} style="width: 25%">
+
+                    <button class="btn btn-success float-right" type="submit" style="padding: 15px">Update</button>
+                </div>
+
+            </div>
+        </div>
     </form>
 </body>
 </html>

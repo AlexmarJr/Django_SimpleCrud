@@ -32,7 +32,7 @@ def updateTask(request, pk):
         if form.is_valid():
             form.save()
             return redirect('/')
-    context = {'form': form}
+    context = {'form': form, 'task': task}
     return render(request, 'tasks/update_task.html', context)
 
 
